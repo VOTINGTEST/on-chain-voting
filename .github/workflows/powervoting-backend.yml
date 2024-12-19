@@ -63,9 +63,9 @@ jobs:
       - name: Deploy on server
         uses: appleboy/ssh-action@v0.1.8
         with:
-          host: ${{ secrets.SSH_HOST }}
+          host: ${{ secrets.SSH_HOST }}:4972
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd ${{ vars.BUILD_PATH }}
-            sh backend.sh
+            cd ${{ vars.BUILD_PATH }}/powervoting-backend
+            sudo sh build.sh
