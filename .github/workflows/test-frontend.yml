@@ -50,4 +50,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd ${{ vars.BUILD_PATH }}/power-voting
+            echo "build"
             sh build.sh

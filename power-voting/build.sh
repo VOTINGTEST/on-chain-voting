@@ -14,6 +14,7 @@ set -e
 rm -fr dist
 echo "Install dependencies"
 rm -rf package-lock.json
+yarn Install
 
 echo "build"
 yarn build:dev
