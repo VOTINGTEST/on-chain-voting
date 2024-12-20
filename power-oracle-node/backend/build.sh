@@ -5,15 +5,15 @@ PORT=$1
 
 IMAGE_NAME="power-voting-oracle-backend"
 
-# (
-#     if ! git show-ref --verify --quiet "refs/heads/main"; then
-#         echo "Error: Branch main does not exist."
-#         exit 1
-#     fi
+(
+    if ! git show-ref --verify --quiet "refs/heads/main"; then
+        echo "Error: Branch main does not exist."
+        exit 1
+    fi
 
-#     git checkout main
-#     git pull origin main
-# )
+    git checkout main
+    git pull origin main
+)
 
 docker build -t $IMAGE_NAME .
 
