@@ -41,4 +41,4 @@ else
 fi
 
 
-docker run --name $IMAGE_NAME -v configuration.yaml:/dist/configuration.yaml -p $PORT:$PORT -d $IMAGE_NAME
+docker run --name $IMAGE_NAME -v ./configuration.yaml:/dist/configuration.yaml -p $PORT:$PORT -d $IMAGE_NAME
