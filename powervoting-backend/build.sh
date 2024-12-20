@@ -13,12 +13,6 @@ IMAGE_NAME="power-voting-backend"
 
     git checkout main
     git pull origin main
-
-    if git diff --quiet HEAD main; then
-        echo "No new commits. Exiting script."
-        exit 0
-    fi
-    wait
 )
 
 docker build -t $IMAGE_NAME .

@@ -9,12 +9,6 @@ set -e
 
     git checkout main
     git pull origin main
-
-    if git diff --quiet HEAD main; then
-        echo "No new commits. Exiting script."
-        exit 0
-    fi
-    wait
 )
 
 rm -fr dist

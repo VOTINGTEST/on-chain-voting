@@ -13,15 +13,7 @@ IMAGE_NAME="power-voting-oracle-backend"
 
     git checkout main
     git pull origin main
-
-    if git diff --quiet HEAD main; then
-        echo "No new commits. Exiting script."
-        exit 1
-    fi
-    wait
 )
-
-git pull
 
 docker build -t $IMAGE_NAME .
 
