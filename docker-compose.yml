@@ -1,0 +1,39 @@
+version: '3.3'
+
+services:
+  snapshot-redis:
+    image: redis:latest
+    ports:
+      - "16380:6380"
+    volumes:
+      - ../redis/data:/data
+    command: redis-server --appendonly yes
+    deploy:
+      resources:
+        limits:
+          memory: 50G
+
+  snapshot-nats:
+    image: nats:latest
+    ports:
+      - "14222:4222"
+      - "18222:8222"
+    volumes:
+      - ../nats/jetstream/store:/data
+    command: [ "-js", "-store_dir", "/data", "-m","8222"]
+    deploy:
+      resources:
+        limits:
+          memory: 50G
+
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+      - pv-net-test
+    ports:
+      - 3307:3306
+    volumes:
+      - /mnt/test:/var/lib/mysql

@@ -1,34 +1,27 @@
 #!/bin/bash
 set -e
 
-REPO_URL=""
-BRANCH_NAME=""
-
-IMAGE_NAME=""
-PROJECET_PATH=""
-CONFIG_PATH=""
-CONFIG_FILE=""
-CODE_PATH=""
 PORT=""
 
+IMAGE_NAME="power-voting-snapshot"
+
 (
-    cd $CODE_PATH
-    if ! git show-ref --verify --quiet "refs/heads/$BRANCH_NAME"; then
-        echo "Error: Branch $BRANCH_NAME does not exist."
+    if ! git show-ref --verify --quiet "refs/heads/main"; then
+        echo "Error: Branch main does not exist."
         exit 1
     fi
 
-    git checkout $BRANCH_NAME
-    git pull origin $BRANCH_NAME
+    git checkout main
+    git pull origin main
 
-    if git diff --quiet HEAD $BRANCH_NAME; then
+    if git diff --quiet HEAD main; then
         echo "No new commits. Exiting script."
         exit 0
     fi
     wait
 )
 
-(cd $PROJECET_PATH && docker build -t $IMAGE_NAME .)
+docker build -t $IMAGE_NAME .
 
 if docker ps -a --format '{{.Names}}' | grep -wq "$IMAGE_NAME"; then
     echo "Stopping container: $IMAGE_NAME..."
@@ -45,4 +38,4 @@ else
     echo "Container $CONTAINER_NAME does not exist or is already stopped."
 fi
 
-docker run --name $IMAGE_NAME -v $CONFIG_PATH/$CONFIG_FILE:/dist/configuration.yaml -p $PORT:$PORT -d $IMAGE_NAME
+docker run --name $IMAGE_NAME -v configuration.yaml:/dist/configuration.yaml -p $PORT:$PORT -d $IMAGE_NAME

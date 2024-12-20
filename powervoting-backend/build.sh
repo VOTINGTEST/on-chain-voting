@@ -1,18 +1,13 @@
 #!/bin/bash
 set -e
 
-REPO_URL=""
-BRANCH_NAME=""
-
-IMAGE_NAME=""
-PROJECET_PATH=""
-CONFIG_PATH=""
-CONFIG_FILE=""
-CODE_PATH=""
 PORT=""
 
+REPO_URL="git@github.com:VOTINGTEST/on-chain-voting.git"
+BRANCH_NAME="main"
+IMAGE_NAME="power-voting-backend"
+
 (
-    cd $CODE_PATH
     if ! git show-ref --verify --quiet "refs/heads/$BRANCH_NAME"; then
         echo "Error: Branch $BRANCH_NAME does not exist."
         exit 1
@@ -28,7 +23,7 @@ PORT=""
     wait
 )
 
-(cd $PROJECET_PATH && docker build -t $IMAGE_NAME .)
+docker build -t $IMAGE_NAME .
 
 if docker ps -a --format '{{.Names}}' | grep -wq "$IMAGE_NAME"; then
     echo "Stopping container: $IMAGE_NAME..."
@@ -45,4 +40,4 @@ else
     echo "Container $CONTAINER_NAME does not exist or is already stopped."
 fi
 
-docker run --name $IMAGE_NAME -v $CONFIG_PATH/$CONFIG_FILE:/dist/configuration.yaml -v $CONFIG_PATH/proof.ucan:/dist/proof.ucan -p $PORT:$PORT -d $IMAGE_NAME
+docker run --name $IMAGE_NAME -v configuration.yaml:/dist/configuration.yaml -v proof.ucan:/dist/proof.ucan -p $PORT:$PORT -d $IMAGE_NAME
