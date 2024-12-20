@@ -56,10 +56,10 @@ jobs:
       - name: Deploy on server
         uses: appleboy/ssh-action@v0.1.8
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
+          host: ${{ vars.SSH_HOST }}
+          username: ${{ vars.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           timeout: 10m
           script: |
             cd ${{ vars.BUILD_PATH }}/power-oracle-node/backend
-            sudo sh build.sh
+            sudo sh build.sh ${{ vars.ORACLE_PORT }}

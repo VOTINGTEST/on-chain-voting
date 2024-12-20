@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-PORT=""
+PORT=$1
 
 IMAGE_NAME="power-voting-backend"
 
