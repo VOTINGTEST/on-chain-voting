@@ -22,14 +22,8 @@ if docker ps -a --format '{{.Names}}' | grep -wq "$IMAGE_NAME"; then
     docker stop $IMAGE_NAME
     docker rm $IMAGE_NAME
 
-    if [ $? -eq 0 ]; then
-        echo "Container $CONTAINER_NAME stopped successfully."
-    else
-        echo "Failed to stop container $CONTAINER_NAME."
-        exit 2
-    fi
 else
-    echo "Container $CONTAINER_NAME does not exist or is already stopped."
+    echo "Container $IMAGE_NAME does not exist or is already stopped."
 fi
 
 docker run --name $IMAGE_NAME -v ./configuration.yaml:/dist/configuration.yaml -p $PORT:$PORT -d $IMAGE_NAME

@@ -21,15 +21,8 @@ if docker ps -a --format '{{.Names}}' | grep -wq "$IMAGE_NAME"; then
     echo "Stopping container: $IMAGE_NAME..."
     docker stop $IMAGE_NAME
     docker rm $IMAGE_NAME
-
-    if [ $? -eq 0 ]; then
-        echo "Container $CONTAINER_NAME stopped successfully."
-    else
-        echo "Failed to stop container $CONTAINER_NAME."
-        exit 1
-    fi
 else
-    echo "Container $CONTAINER_NAME does not exist or is already stopped."
+    echo "Container $IMAGE_NAME does not exist or is already stopped."
 fi
 
 
