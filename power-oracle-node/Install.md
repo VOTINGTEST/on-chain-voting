@@ -28,22 +28,12 @@ Edit the `configuration.yaml` file as needed for your environment.
 Build the Docker image for the Oracle node:
 
 ```
-docker build -t oracle .
+sh build.sh
 ```
 
-![Building Docker Image](img/2.png)
+<img src="img/2.png" width="50%" />
 
-#### 6. Run the Docker Image
-
-Run the Docker image in detached mode:
-
-```
-docker run -d oracle
-```
-
-![Running Docker Image](img/3.png)
-
-#### 7. View Logs
+#### 6. View Logs
 
 To monitor the logs of the running container, use the following command, replacing the container ID with the ID of your running container:
 
@@ -54,9 +44,9 @@ docker logs -f <container_id>
 For example:
 
 ```
-docker logs -f f3b24890eff07a89d7c27c92164b80983a7a12e81692e72db9a8747631aa2230
+docker logs -f 624d96fdb89b
 ```
 
-![Viewing Logs](img/4.png)
+<img src="img/4.png" width="50%" />
 
 By following these steps, you will successfully compile, build, and run the Oracle node using Docker.

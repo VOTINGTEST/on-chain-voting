@@ -40,4 +40,4 @@ else
     echo "Container $IMAGE_NAME does not exist or is already stopped."
 fi
 
-docker run --name $IMAGE_NAME -p $PORT:$PORT-v nginx.conf:/etc/nginx/conf.d/default.conf -d $IMAGE_NAME
+docker run --name $IMAGE_NAME -p $PORT:$PORT -d $IMAGE_NAME

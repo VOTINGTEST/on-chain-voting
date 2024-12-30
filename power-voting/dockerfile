@@ -17,7 +17,7 @@ RUN npm install
 COPY . .
 
 # 构建项目
-RUN yarn build:dev
+RUN yarn build
 
 # 使用 Nginx 官方镜像作为生产阶段的基础镜像
 FROM nginx:alpine

@@ -52,27 +52,17 @@ Run the following command to tidy Go modules and install dependencies:
 go mod tidy
 ```
 
-#### 8. Build the Docker Image
+#### 8. Build the Project
 
-Build the Docker image for the PowerVoting backend:
+Run the shell script to build project:
 
 ```
-docker build -t powervoting .
+sh build.sh
 ```
 
 ![Building Docker Image](img/2.png)
 
-#### 9. Run the Docker Image
-
-Run the Docker image, mapping port 9999 of the container to port 9999 of the host, in detached mode:
-
-```
-docker run -p 9999:9999 -d powervoting
-```
-
-![Running Docker Image](img/3.png)
-
-#### 10. View Logs
+#### 9. View Logs
 
 To monitor the logs of the running container, you can use the Docker logs command:
 

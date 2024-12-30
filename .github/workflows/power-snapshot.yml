@@ -57,5 +57,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd ${{ vars.BUILD_PATH }}/power-snapshot
-            sudo sh build.sh ${{ vars.SNAPSHOT_PORT }}
+            sudo sh build.sh
 
