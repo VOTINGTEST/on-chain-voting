@@ -19,3 +19,5 @@ dist.zip
 .idea
 .deps
 .DS_Store
+
+./backend/configuratiom.yaml

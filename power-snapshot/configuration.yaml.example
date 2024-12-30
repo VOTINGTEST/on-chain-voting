@@ -3,28 +3,28 @@ server:
   port:
 
 redis:
-  uri: redis:6379
+  uri: 
   user:
   password:
-  db: 0
+  db: 
 
 nats:
   uri: 
 
 network:
-  - id: 314159
-    name: FileCoin-Calibration
-    idPrefix: t0
+  - id: 
+    name: 
+    idPrefix: 
     queryRpc:
       - 
     contractRpc: 
     oracleContract: 
     oracleStartHeight: 
-    oracleAbi: oracle.json
+    oracleAbi: 
 
 github:
   # github token
   token:
     - 
     # graphql api
-  graphql: https://api.github.com/graphql
+  graphql: 

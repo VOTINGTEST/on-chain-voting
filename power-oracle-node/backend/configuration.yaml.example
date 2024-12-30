@@ -1,15 +1,16 @@
 server:
+  # server port
   port: 
   
 network:
-  - id: 314159
-    name: Calibration
+  - id: 
+    name: 
     # RPC url
-    rpc: http://203.160.91.77:27924/rpc/v1
+    rpc: 
     #  absolute path
-    abiPath: oracle_abi.json
+    abiPath: 
     # contract address
-    contractAddress: 0x14696967B6987Ae34c9018ed8D3955064d88231F
+    contractAddress: 
     # wallet private key
     privateKey:
     # wallet address
@@ -21,4 +22,4 @@ github:
   # github token
   githubToken:
   # graphql api
-  graphql: https://api.github.com/graphql
+  graphql: 
