@@ -20,4 +20,4 @@ dist.zip
 .deps
 .DS_Store
 
-./backend/configuratiom.yaml
+backend/configuration.yaml
