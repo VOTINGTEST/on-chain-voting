@@ -1,3 +1,6 @@
+server:
+  port: 
+  
 network:
   - id: 314159
     name: Calibration

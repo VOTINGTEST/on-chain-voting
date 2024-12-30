@@ -1,9 +1,22 @@
 #!/bin/bash
 set -e
 
-PORT=$1
+CONFIG_FILE="configuration.yaml"
 
 IMAGE_NAME="power-voting-snapshot"
+
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "Error: $CONFIG_FILE does not exist."
+    exit 1
+fi
+
+PORT=$(awk '/^server:/{flag=1;next} /^  port:/{if(flag) print $2; flag=0}' "$CONFIG_FILE" | tr -d ':')
+if [ -z "$PORT" ]; then
+  echo "未能从配置文件中读取 port 值！"
+  exit 1
+fi
+
+echo "project: $IMAGE_NAME, port: $PORT"
 
 (
     if ! git show-ref --verify --quiet "refs/heads/main"; then

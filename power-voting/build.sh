@@ -1,6 +1,24 @@
 #!/bin/bash
 set -e
 
+CONFIG_FILE="configuration.yaml"
+
+IMAGE_NAME="power-voting-frontend"
+
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "Error: $CONFIG_FILE does not exist."
+    exit 1
+fi
+
+PORT=$(awk '/^server:/{flag=1;next} /^  port:/{if(flag) print $2; flag=0}' "$CONFIG_FILE" | tr -d ':')
+
+if [ -z "$PORT" ]; then
+  echo "未能从配置文件中读取 port 值！"
+  exit 1
+fi
+
+echo "project: $IMAGE_NAME, port: $PORT"
+
 (
     if ! git show-ref --verify --quiet "refs/heads/main"; then
         echo "Error: Branch main does not exist."
@@ -11,9 +29,15 @@ set -e
     git pull origin main
 )
 
-rm -fr dist
-echo "Install dependencies"
-rm -rf package-lock.json
+docker build -t $IMAGE_NAME .
 
-echo "build"
-yarn build:dev
+if docker ps -a --format '{{.Names}}' | grep -wq "$IMAGE_NAME"; then
+    echo "Stopping container: $IMAGE_NAME..."
+    docker stop $IMAGE_NAME
+    docker rm $IMAGE_NAME
+
+else
+    echo "Container $IMAGE_NAME does not exist or is already stopped."
+fi
+
+docker run --name $IMAGE_NAME -p $PORT:$PORT-v nginx.conf:/etc/nginx/conf.d/default.conf -d $IMAGE_NAME
