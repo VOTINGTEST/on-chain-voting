@@ -81,6 +81,8 @@ Edit the `configuration.yaml` file as needed for your environment.
 
 Edit the `nginx.conf` file as needed for your config.
 
+<img src="img/nginx.png"  width="50%" />
+
 #### 6.Build the Project
 
 Build  with the following command:
