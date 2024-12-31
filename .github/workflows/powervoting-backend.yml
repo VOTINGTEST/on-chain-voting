@@ -48,6 +48,7 @@ jobs:
       - name: Copy config file to test dir
         run: |
           cd ./powervoting-backend
+          mv configuration.yaml.example configuration.yaml
           cp ./abi/* ./contract
           cp ./abi/* ./task
           cp ./abi/* ./utils
