@@ -44,15 +44,7 @@ Edit the `configuration.yaml` file as needed for your environment.
 
 ![Edit Configuration](img/1.png)
 
-#### 7. Install Dependencies
-
-Run the following command to tidy Go modules and install dependencies:
-
-```
-go mod tidy
-```
-
-#### 8. Build the Project
+#### 7. Build the Project
 
 Run the shell script to build project:
 
@@ -60,9 +52,9 @@ Run the shell script to build project:
 sh build.sh
 ```
 
-![Building Docker Image](img/2.png)
+<img src="img/2.png" width="50%" />
 
-#### 9. View Logs
+#### 8. View Logs
 
 To monitor the logs of the running container, you can use the Docker logs command:
 
@@ -70,6 +62,6 @@ To monitor the logs of the running container, you can use the Docker logs comman
 docker logs <container_id>
 ```
 
-![Viewing Logs](img/4.png)
+<img src="img/4.png" width="50%" />
 
 By following these steps, you will successfully compile, build, and run the PowerVoting backend using Docker.

@@ -23,9 +23,9 @@ Edit the `configuration.yaml` file as needed for your environment.
 
 ![Edit Configuration](img/1.png)
 
-#### 5. Build the Docker Image
+#### 5. Build the Project
 
-Build the Docker image for the Oracle node:
+Build the Oracle node Project:
 
 ```
 sh build.sh

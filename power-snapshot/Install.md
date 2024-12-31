@@ -24,13 +24,13 @@ Clone the PowerVoting backend repository with the repository branch set to `main
 git clone https://github.com/filecoin-project/on-chain-voting.git
 ```
 
-#### 6. Modify the Configuration File
+#### 5. Modify the Configuration File
 
 Edit the `configuration.yaml` file as needed for your environment.
 
 ![Edit Configuration](img/1.png)
 
-#### 7. Build the Project
+#### 6. Build the Project
 
 Run the shell script to build project:
 
@@ -40,7 +40,7 @@ sh build.sh
 
 <img src="img/2.png" width="50%" />
 
-#### 8. View Logs
+#### 7. View Logs
 
 To monitor the logs of the running container, you can use the Docker logs command:
 

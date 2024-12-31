@@ -1,19 +1,17 @@
 #!/bin/bash
 set -e
 
-CONFIG_FILE="configuration.yaml"
-
 IMAGE_NAME="power-voting-backend"
 
-if [ ! -f "$CONFIG_FILE" ]; then
-    echo "Error: $CONFIG_FILE does not exist."
+if [ ! -f "configuration.yaml" ]; then
+    echo "Error: configuration.yaml does not exist."
     exit 1
 fi
 
-PORT=$(awk '/^server:/{flag=1;next} /^  port:/{if(flag) print $2; flag=0}' "$CONFIG_FILE" | tr -d ':')
+PORT=$(awk '/^server:/{flag=1;next} /^  port:/{if(flag) print $2; flag=0}' "configuration.yaml" | tr -d ':')
 
 if [ -z "$PORT" ]; then
-  echo "未能从配置文件中读取 port 值！"
+  echo "Error: Can not get port from configuration."
   exit 1
 fi
 

@@ -77,7 +77,11 @@ Edit the `configuration.yaml` file as needed for your environment.
 
 <img src="img/config.png"  alt="" />
 
-#### 5.Build the Project
+#### 5.Modify the Nginx Configuration File
+
+Edit the `nginx.conf` file as needed for your config.
+
+#### 6.Build the Project
 
 Build  with the following command:
 
@@ -85,6 +89,6 @@ Build  with the following command:
 sh build.sh
 ```
 
-#### 6.Verify
+#### 7.Verify
 
  Open your browser and enter your domain name or server IP address. You should be able to see your deployed front-end application.
