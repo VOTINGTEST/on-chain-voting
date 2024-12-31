@@ -48,6 +48,7 @@ jobs:
       - name: Test
         run: |
           cd ./power-oracle-node/backend
+          mv configuration.yaml.example configuration.yaml
           go test -v ./...
 
   deploy:

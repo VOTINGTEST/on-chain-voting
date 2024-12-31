@@ -37,6 +37,7 @@ jobs:
       - name: Copy config file to test dir
         run: |
           cd ./power-snapshot
+          mv configuration.yaml.example configuration.yaml
           cp ./abi/* ./internal/service
           cp ./abi/* ./utils
 
