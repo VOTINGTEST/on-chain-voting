@@ -43,7 +43,7 @@ jobs:
           GH_TOKEN: ${{ secrets.gh_token }}
         uses: mikefarah/yq@master
         with:
-          cmd: yq eval ".github.githubToken = strenv(GH_TOKEN)" -i ./power-oracle-node/backend/configuration.yaml
+          cmd: yq eval ".github.githubToken = strenv(GH_TOKEN)" -i ./power-oracle-node/backend/configuration.yaml.example
 
       - name: Test
         run: |
