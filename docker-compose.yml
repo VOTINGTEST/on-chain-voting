@@ -4,7 +4,7 @@ services:
   snapshot-redis:
     image: redis:latest
     ports:
-      - "16380:6380"
+      - "16379:6379"
     volumes:
       - ../redis/data:/data
     command: redis-server --appendonly yes
@@ -30,10 +30,8 @@ services:
     image: mysql:latest
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: password
-    networks:
-      - pv-net-test
+      MYSQL_ROOT_PASSWORD: <ROOT_PASSWORD>
     ports:
-      - 3307:3306
+      - "13306:3306"
     volumes:
-      - /mnt/test:/var/lib/mysql
+      - ../db/:/var/lib/mysql

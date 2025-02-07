@@ -34,7 +34,7 @@ COPY --from=backend-builder /build/abi/power-voting.json .
 COPY --from=backend-builder /build/abi/oracle.json .
 
 # expose server port
-EXPOSE 9999
+EXPOSE 18007
 
 # run
 CMD ["/dist/app"]
