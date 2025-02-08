@@ -1,5 +1,3 @@
-[TOC]
-
 # GitHub CI/CD Deployment Documentation
 
 ## 1. Configure GitHub Repository Variables
