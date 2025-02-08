@@ -1,4 +1,4 @@
-# GitHub CI/CD Deployment Documentation
+# GitHub CD Deployment Documentation
 
 ## 1. Configure GitHub Repository Variables
 
@@ -21,25 +21,30 @@ Add the following environment variables under **"Settings" > "Secrets and variab
 
 ![img.png](img/img.png)
 
-## 2. Server Environment Initialization
-
-### 2.1 Install Docker
+## 2. Install Docker
 
 Follow the [official documentation](https://docs.docker.com/engine/install/) to install Docker.
 
-### 2.2 Start Docker Compose
+## 3. Clone the Repository
+
+```
+git clone <repository_url>
+```
+
+## 4. Start the snapshot-redis, snapshot-nats, and MySQL services
 
 Ensure that the `docker-compose.yml` file is correctly configured, then start the services with the following command:
 
 ```sh
+cd on-chain-voting 
 docker compose up -d
 ```
 
 Create the database `power-voting-filecoin` and initialize the data.
 
-## 3. Project Configuration
+## 5. Project Configuration
 
-### 3.1 Frontend Configuration
+### 5.1 Frontend Configuration
 
 #### 1. Navigate to the Frontend Directory
 
@@ -116,7 +121,7 @@ server {
 }
 ```
 
-### 3.2 Backend Configuration
+### 5.2 Backend Configuration
 
 #### 1. Navigate to the Backend Directory
 
@@ -173,7 +178,7 @@ w3client:
   space: <SPACE>
 ```
 
-### 3.3 Oracle Configuration
+### 5.3 Oracle Configuration
 
 #### 1. Navigate to the Oracle directory
 
@@ -209,7 +214,7 @@ github:
   graphql: https://api.github.com/graphql
 ```
 
-### 3.4 Snapshot Configuration
+### 5.4 Snapshot Configuration
 
 #### 1. Navigate to the Snapshot directory
 
@@ -254,3 +259,6 @@ github:
     - <GITHUB_TOKEN_2>
   graphql: https://api.github.com/graphql
 ```
+
+## 6. Automatically Execute  cd When a New Commit Arrives
+
