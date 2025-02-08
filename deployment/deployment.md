@@ -28,19 +28,67 @@ Follow the [official documentation](https://docs.docker.com/engine/install/) to 
 ## 3. Clone the Repository
 
 ```
-git clone <repository_url>
+git clone https://github.com/filecoin-project/on-chain-voting
 ```
 
 ## 4. Start the snapshot-redis, snapshot-nats, and MySQL services
 
-Ensure that the `docker-compose.yml` file is correctly configured, then start the services with the following command:
+### 4.1. Modify the `docker-compose.yml` File
+
+```
+cd on-chain-voting 
+vim docker-compose.yml
+```
 
 ```sh
-cd on-chain-voting 
+version: '3.3'
+
+services:
+  snapshot-redis:
+    image: redis:latest
+    ports:
+      - "16379:6379"
+    volumes:
+      - <REDIS_DB_PATH>:/data
+    command: redis-server --appendonly yes
+    deploy:
+      resources:
+        limits:
+          memory: 50G
+
+  snapshot-nats:
+    image: nats:latest
+    ports:
+      - "14222:4222"
+      - "18222:8222"
+    volumes:
+      - <NATS_DB_PATH>:/data
+    command: [ "-js", "-store_dir", "/data", "-m","8222"]
+    deploy:
+      resources:
+        limits:
+          memory: 50G
+
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: <ROOT_PASSWORD>
+    ports:
+      - "13306:3306"
+    volumes:
+      - <MYSQL_DB_PATH>:/var/lib/mysql
+```
+
+### 4.2 Start Docker
+
+```
 docker compose up -d
 ```
 
-Create the database `power-voting-filecoin` and initialize the data.
+### 4.3 Connect to the Database
+
+ Create a Database Named `power-voting-filecoin`
 
 ## 5. Project Configuration
 
@@ -260,5 +308,5 @@ github:
   graphql: https://api.github.com/graphql
 ```
 
-## 6. Automatically Execute  cd When a New Commit Arrives
+## 6. Automatically Execute  CD When a New Commit Arrives
 
